@@ -62,13 +62,16 @@ color: #fff;}
     <form action="">
       <input id="username" placeholder="username " autocomplete="off" /><input placeholder="message" id="m" autocomplete="off" /><button>Send</button>
     </form>
-    <script src="http://paullim01.ddns.net:2086/socket.io/socket.io.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script>
+    var socket = io.connect('http://paullim01.ddns.net:2086');
+    </script>
+
     <script>
     $( document ).ready(function() {
 
       $(function () {
-
 	     var socket = io();
         $('form').submit(function(){
         	var thing = {"msg":$('#m').val(),"username":$("#username").val()}

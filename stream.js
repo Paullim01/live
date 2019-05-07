@@ -5,7 +5,9 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var port = 2086;
 
+http.listen(2086);
 // chat template
+
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/chat.html');
@@ -13,13 +15,11 @@ app.get('/', function(req, res){
 
 
 io.on('connection', function(socket){
-
-io.on('connection', function(socket){
   console.log('an user connected');
   socket.on('disconnect', function(){
     console.log('user disconnected');
   });
-});
+
 // refresh how many are watching every 5000 ms
 	setInterval(function(){
 	    socket.emit('count', Object.keys(io.sockets.connected).length); 
